@@ -5,9 +5,9 @@ This program uses python to connect Wiimotes to a computer over Bluetooth using 
 
 ## How to use
 ### Preparing
-On your Linux machine, `git pull https://github.com/azzra/python3-wiimote` to your local machine.
-Use `sudo apt-get update && sudo apt-get upgrade && sudo apt-get install -Y libcwiid1 libcwiid-dev automake awk bison flex bluez bluetooth python3`
-These commands will install all the packages needed for making this work.
+- On your Linux machine, `git pull https://github.com/azzra/python3-wiimote` to your local machine.
+- Use `sudo apt-get update && sudo apt-get upgrade && sudo apt-get install -Y libcwiid1 libcwiid-dev automake awk bison flex bluez bluetooth python3`
+- These commands will install all the packages needed for making this work.
 ### Installing/Compiling from Source
 The Cwiid package must be compiled from source, and is done with Automake. Use the below commands to compile everything needed.
 - `cd python3-wiimote`
