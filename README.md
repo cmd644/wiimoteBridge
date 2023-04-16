@@ -25,3 +25,6 @@ After all this is done, everything is setup and ready to go!
 - Start the script with `python3 ./wiimoteBridge.py` to get connecting.
 ### Why this script exists
 Flailing around trying to get a buzzer system working with Wiimotes sucks, and the amount of research that I did to make this work is absolutely horrid. 50+ Chrome tabs later, I had found a way to get Wiimotes interacting with a Raspberry Pi. The Cwiid library that isn't available through apt anymore for some reason, as well as the python3 pip package that SAYS it has cwiid in it DOESN'T work and ISN'T maintained anymore, so I had to do much more research coming up with a functional script that could connect these remotes. All of this work to now share on the Internet for some other poor sap who needs to figure out how to do this, I hope you find this script well.
+
+## Setting up the buttons
+Setting up the "A" and "B" buttons to function as a buzzer within the program will take some time and getting the "1" and "2" buttons to work as a potential way to answer numerical based problems could also have some advantages.
