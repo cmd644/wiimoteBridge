@@ -141,10 +141,14 @@ while True:
     wiimoteFourPressB = wiimoteFourButtons & cwiid.BTN_B
     if(wiimoteOnePressA or wiimoteOnePressB):
       # DO SOMETHING
+      print("Wiimote One Pressed A or B.")
     elif(wiimoteTwoPressA or wiimoteTwoPressB):
       # DO SOMETHING
+      print("Wiimote Two Pressed A or B.")
     elif(wiimoteThreePressA or wiimoteThreePressB):
       # DO SOMETHING
+      print("Wiimote Three Pressed A or B.")
     elif(wiimoteFourPressA or wiimoteFourPressB):
       # DO SOMETHING
+      print("Wiimote Four Pressed A or B.")
     # continues to the next iteration
