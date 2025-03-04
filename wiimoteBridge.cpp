@@ -136,17 +136,17 @@ int main()
             // DO SOMETHING
             std::cout << "Wiimote One Pressed A or B!" << std::endl;
         } 
-        else if (wiimoteTwoPressA || wiimoteTwoPressB) 
+        if (wiimoteTwoPressA || wiimoteTwoPressB) 
         {
             // DO SOMETHING
             std::cout << "Wiimote Two Pressed A or B!" << std::endl;
         } 
-        else if (wiimoteThreePressA || wiimoteThreePressB) 
+        if (wiimoteThreePressA || wiimoteThreePressB) 
         {
             // DO SOMETHING
             std::cout << "Wiimote Three Pressed A or B!" << std::endl;
         } 
-        else if (wiimoteFourPressA || wiimoteFourPressB) 
+        if (wiimoteFourPressA || wiimoteFourPressB) 
         {
             // DO SOMETHING
             std::cout << "Wiimote Four Pressed A or B!" << std::endl;
