@@ -1,4 +1,4 @@
-###Copyright 2023-2025 by Charles Descamps###
+###Copyright 2025 by Charles Descamps###
 
 # import libraries
 import cwiid # THIS ONE IS AWFUL. I WILL NEVER DEAL WITH IT AGAIN.
@@ -21,7 +21,6 @@ print("Press 1+2 on Wiimotes to connect.\n")
 #wiimoteOne = cwiid.Wiimote()
 #wiimoteTwo = cwiid.Wiimote()
 #wiimoteThree = cwiid.Wiimote()
-#wiimoteFour = cwiid.Wiimote()
 
 wiimoteOne = None
 wiimoteOneAttempts = 2
@@ -29,8 +28,6 @@ wiimoteTwo = None
 wiimoteTwoAttempts = 2
 wiimoteThree = None
 wiimoteThreeAttempts = 2
-wiimoteFour = None
-wiimoteFourAttempts = 2
 
 # replaces the above with a more robust method of Wiimote connecting.
 while not wiimoteOne:
@@ -69,28 +66,14 @@ while not wiimoteThree:
        print(f"On attempt {wiimoteThreeAttempts}\n")
        wiimoteThreeAttempts = wiimoteThreeAttempts + 1
 
-while not wiimoteFour:
-   try:
-       wiimoteFour = cwiid.Wiimote()
-   except RuntimeError:
-       if (wiimoteFourAttempts > 10):
-           #quit()
-           print("Wiimote Four is not connected, moving on.")
-           break
-       print("Error connecting Wiimote Four")
-       print(f"On attempt {wiimoteOneAttempts}\n")
-       wiimoteFourAttempts = wiimoteFourAttempts + 1
-
 # enables button logging
 wiimoteOne.rpt_mode = cwiid.RPT_BTN
 wiimoteTwo.rpt_mode = cwiid.RPT_BTN
 wiimoteThree.rpt_mode = cwiid.RPT_BTN
-wiimoteFour.rpt_mode = cwiid.RPT_BTN
 # set the Wiimote LEDs
 wiimoteOne.led = 1
 wiimoteTwo.led = 2
 wiimoteThree.led = 3
-wiimoteFour.led = 4
 
 # setup the telnet connection to the wss server
 buzzCli = telnetlib.Telnet("127.0.0.1", 8181)
@@ -101,14 +84,12 @@ while True:
     wiimoteOneButtons = wiimoteOne.state['buttons']
     wiimoteTwoButtons = wiimoteTwo.state['buttons']
     wiimoteThreeButtons = wiimoteThree.state['buttons']
-    wiimoteFourButtons = wiimoteFour.state['buttons']
     # define exit states
     wiimoteOneExitState = wiimoteOneButtons - cwiid.BTN_PLUS - cwiid.BTN_MINUS
     wiimoteTwoExitState = wiimoteTwoButtons - cwiid.BTN_PLUS - cwiid.BTN_MINUS
     wiimoteThreeExitState = wiimoteThreeButtons - cwiid.BTN_PLUS - cwiid.BTN_MINUS
-    wiimoteFourExitState = wiimoteFourButtons - cwiid.BTN_PLUS - cwiid.BTN_MINUS
     # exit check: press Plus and Minus together
-    if(wiimoteOneExitState == 0 or wiimoteTwoExitState == 0 or wiimoteThreeExitState == 0 or wiimoteFourExitState == 0):
+    if(wiimoteOneExitState == 0 or wiimoteTwoExitState == 0 or wiimoteThreeExitState == 0):
         if(wiimoteOneExitState == 0):
             print("Wiimote One Connection Closing\n")
             wiimoteOne.rumble = 1
@@ -127,12 +108,6 @@ while True:
            time.sleep(.5)
            wiimoteThree.rumble = 0
            exit(wiimoteThree)
-        else:
-           print("Wiimote Four Connection Closing\n")
-           wiimoteFour.rumble = 1
-           time.sleep(.5)
-           wiimoteFour.rumble = 0
-           exit(wiimoteFour)
         buzzCli.close()
     # Otherwise, check what buttons are pressed from what remote
     # check button states (Button A pressed or Button B pressed)
@@ -142,8 +117,6 @@ while True:
     wiimoteTwoPressB = wiimoteTwoButtons & cwiid.BTN_B
     wiimoteThreePressA = wiimoteThreeButtons & cwiid.BTN_A
     wiimoteThreePressB = wiimoteThreeButtons & cwiid.BTN_B
-    wiimoteFourPressA = wiimoteFourButtons & cwiid.BTN_A
-    wiimoteFourPressB = wiimoteFourButtons & cwiid.BTN_B
     if(wiimoteOnePressA or wiimoteOnePressB):
       # DO SOMETHING
       print("Wiimote One Pressed A or B.")
@@ -156,8 +129,4 @@ while True:
      # DO SOMETHING
      print("Wiimote Three Pressed A or B.")
      buzzCli.write(b"/blue\n")
-    elif(wiimoteFourPressA or wiimoteFourPressB):
-     # DO SOMETHING
-     print("Wiimote Four Pressed A or B.")
-     buzzCli.write(b"/yellow\n")
     # continues to the next iteration

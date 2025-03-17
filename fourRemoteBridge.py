@@ -1,4 +1,4 @@
-###Copyright 2023-2025 by Charles Descamps###
+###Copyright 2025 by Charles Descamps###
 
 # import libraries
 import cwiid # THIS ONE IS AWFUL. I WILL NEVER DEAL WITH IT AGAIN.
